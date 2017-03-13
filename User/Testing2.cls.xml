@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="User.Testing2">
+<Super>%Persistent,%Populate</Super>
+<TimeCreated>64355,40454.871035</TimeCreated>
+
+<Method name="Testing">
+<ClassMethod>1</ClassMethod>
+<Implementation><![CDATA[		write ! , "Testing"
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^User.Testing2D</DataLocation>
+<DefaultData>Testing2DefaultData</DefaultData>
+<IdLocation>^User.Testing2D</IdLocation>
+<IndexLocation>^User.Testing2I</IndexLocation>
+<StreamLocation>^User.Testing2S</StreamLocation>
+<Data name="Testing2DefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>
