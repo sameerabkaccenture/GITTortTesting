@@ -6,7 +6,7 @@
 
 <Method name="Testing">
 <ClassMethod>1</ClassMethod>
-<Implementation><![CDATA[		write ! , "Testing"
+<Implementation><![CDATA[		write ! , "Testing1"
 ]]></Implementation>
 </Method>
 
@@ -18,8 +18,6 @@
 <IndexLocation>^User.Testing2I</IndexLocation>
 <StreamLocation>^User.Testing2S</StreamLocation>
 <Data name="Testing2DefaultData">
-<Structure>listnode</Structure>
-<Subscript/>
 <Value name="1">
 <Value>%%CLASSNAME</Value>
 </Value>
