@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="User.Testing1">
+<Super>%Persistent,%Populate</Super>
+<TimeCreated>64355,36943.136128</TimeCreated>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^User.Testing1D</DataLocation>
+<DefaultData>Testing1DefaultData</DefaultData>
+<IdLocation>^User.Testing1D</IdLocation>
+<IndexLocation>^User.Testing1I</IndexLocation>
+<StreamLocation>^User.Testing1S</StreamLocation>
+<Data name="Testing1DefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>
