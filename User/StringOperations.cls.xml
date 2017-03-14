@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="User.StringOperations">
+<Super>%Persistent,%Populate</Super>
+<TimeCreated>64355,66741.234703</TimeCreated>
+
+<Method name="reverseString">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>name:%String</FormalSpec>
+<Implementation><![CDATA[	write !,  "Reversed the string :: "_$Reverse(name)
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^User.StringOperationsD</DataLocation>
+<DefaultData>StringOperationsDefaultData</DefaultData>
+<IdLocation>^User.StringOperationsD</IdLocation>
+<IndexLocation>^User.StringOperationsI</IndexLocation>
+<StreamLocation>^User.StringOperationsS</StreamLocation>
+<Data name="StringOperationsDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>
