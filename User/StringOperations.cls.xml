@@ -4,10 +4,44 @@
 <Super>%Persistent,%Populate</Super>
 <TimeCreated>64355,66741.234703</TimeCreated>
 
+<Property name="MyArray">
+<Type>%Array</Type>
+</Property>
+
+<Property name="counter">
+<Type>%Integer</Type>
+</Property>
+
 <Method name="reverseString">
 <ClassMethod>1</ClassMethod>
 <FormalSpec>name:%String</FormalSpec>
 <Implementation><![CDATA[	write !,  "Reversed the string :: "_$Reverse(name)
+]]></Implementation>
+</Method>
+
+<Method name="countString">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>input:%String,searchString:%String</FormalSpec>
+<Implementation><![CDATA[
+	set counter = 0
+	set lastIndex = -1
+	While lastIndex '= 0
+	{
+		set lastIndex = $FIND(input,searchString,lastIndex)
+		if lastIndex '= 0
+		{
+			set counter = $INCREMENT(counter)
+			
+		}
+	}
+	write ! , "counter is :: "_ counter
+]]></Implementation>
+</Method>
+
+<Method name="searchAndReplace">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>input:%String,replaceFromString:%String,replaceToString:%String</FormalSpec>
+<Implementation><![CDATA[	write !, $REPLACE(input,replaceFromString,replaceToString)
 ]]></Implementation>
 </Method>
 
@@ -19,10 +53,14 @@
 <IndexLocation>^User.StringOperationsI</IndexLocation>
 <StreamLocation>^User.StringOperationsS</StreamLocation>
 <Data name="StringOperationsDefaultData">
-<Structure>listnode</Structure>
-<Subscript/>
 <Value name="1">
 <Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>MyArray</Value>
+</Value>
+<Value name="3">
+<Value>counter</Value>
 </Value>
 </Data>
 </Storage>
