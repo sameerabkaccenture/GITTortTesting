@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="User.installer">
+<IncludeCode>%occInclude</IncludeCode>
+<TimeCreated>64400,45652.261311</TimeCreated>
+
+<UDLText name="T">
+<Content><![CDATA[
+// You can see generated method in zsetup+1^App.Installer.1
+
+]]></Content>
+</UDLText>
+
+<XData name="Install">
+<XMLNamespace>INSTALLER</XMLNamespace>
+<Data><![CDATA[
+<Manifest>
+    <If Condition='(##class(Config.Namespaces).Exists("${Namespace}")=0)'>
+        <Log Text="Creating namespace ${Namespace}" Level="3"/>
+        <Namespace Name="${Namespace}" Create="yes" Code="${Namespace}" Ensemble="1" Data="${Namespace}">
+            <Configuration>
+                <Database Name="${Namespace}" Dir="${MGRDIR}${Namespace}" Create="yes"/>
+                
+                <!--<GlobalMapping Global="CacheMsg" From="ENSLIB" /> 
+                <GlobalMapping Global="ALL" From="ENSEMBLE"   />
+                
+                
+                 <RoutineMapping Routines="Ens*" Type="ALL" From="ENSLIB"/> -->
+                <RoutineMapping Routines="HS.*" Type="ALL" From="HSLIB"/> 
+                
+                 <!--<ClassMapping Package="Ens" From="ENSLIB"/>
+                <ClassMapping Package="EnsLib" From="ENSLIB"/>
+                <ClassMapping Package="EnsPortal" From="ENSLIB"/>
+                <ClassMapping Package="CSPX.Dashboard" From="ENSLIB"/> -->
+                <ClassMapping Package="HS" From="HSLIB"/>
+                <ClassMapping Package="HS.Local" From="HSCUSTOM"/>
+                
+                
+            </Configuration>
+        </Namespace>
+       <!-- <Production>
+        <Credential  Name="Admin" Username="SuperUser" Password="sys" Overwrite="0"/>
+        </Production>-->
+        
+               
+        <Log Text="End Creating namespace ${Namespace}" Level="3"/>
+    </If>
+
+    <Role Name="AppRole" Description="Role to access and use the App" Resources="%DB_CACHESYS:RW,%Admin_Secure:U,%Ens_Portal:RW" />
+
+    <Namespace Name="${Namespace}" Create="no">
+        <CSPApplication Url="/csp/${Namespace}" Directory="${CSPDIR}${Namespace}" AuthenticationMethods="64" IsNamespaceDefault="true" Grant="AppRole" />
+        <IfDef Var="SourceDir">
+            <Log Text="SourceDir defined - offline install from ${SourceDir}" Level="0"/>
+            <Import File="${SourceDir}"/>
+        </IfDef>
+    </Namespace>
+    
+</Manifest>
+]]></Data>
+</XData>
+
+<UDLText name="T">
+<Content><![CDATA[
+// Entry point method, you need to call
+
+]]></Content>
+</UDLText>
+
+<UDLText name="T">
+<Content><![CDATA[
+// At class compile time it generates Caché ObjectScript code from the manifest
+
+]]></Content>
+</UDLText>
+
+<UDLText name="T">
+<Content><![CDATA[
+// After that you can run this installer from a terminal:
+
+]]></Content>
+</UDLText>
+
+<UDLText name="T">
+<Content><![CDATA[
+// Set pVars("Namespace")="NewNamespace1"
+
+]]></Content>
+</UDLText>
+
+<UDLText name="T">
+<Content><![CDATA[
+// Set pVars("SourceDir")="C:\Practice1\distr\"
+
+]]></Content>
+</UDLText>
+
+<UDLText name="T">
+<Content><![CDATA[
+// Do ##class(App.Installer).setup(.pVars)
+
+]]></Content>
+</UDLText>
+
+<Method name="setup">
+<Internal>1</Internal>
+<ClassMethod>1</ClassMethod>
+<CodeMode>objectgenerator</CodeMode>
+<FormalSpec><![CDATA[&pVars,pLogLevel:%Integer=0,pInstaller:%Installer.Installer]]></FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[     Quit ##class(%Installer.Manifest).%Generate(%compiledclass, %code, "Install")
+]]></Implementation>
+</Method>
+</Class>
+</Export>
