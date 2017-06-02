@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="UNIT.MysisToORU.RoutingRule">
+<Description>
+</Description>
+<Super>Ens.Rule.Definition</Super>
+<TimeCreated>64363,43277.726498</TimeCreated>
+
+<Parameter name="RuleAssistClass">
+<Default>EnsLib.HL7.MsgRouter.RuleAssist</Default>
+</Parameter>
+
+<XData name="RuleDefinition">
+<XMLNamespace>http://www.intersystems.com/rule</XMLNamespace>
+<Data><![CDATA[
+<ruleDefinition alias="" context="EnsLib.HL7.MsgRouter.RoutingEngine" production="UNIT.MysisToORU">
+<variable name="tclinic"></variable>
+<ruleSet name="" effectiveBegin="" effectiveEnd="">
+<assign property="@tclinic" value="Lookup(&quot;Clinic&quot;,HL7.{PIDgrpgrp(1).ORCgrp(1).OBR:OrderingProvider.IDnumber},&quot;UNKNOWN&quot;,)"></assign>
+<rule name="" disabled="false">
+<constraint name="source" value="FromMysis"></constraint>
+<constraint name="docCategory" value="Mysis27"></constraint>
+<constraint name="docName" value="ORU_R01"></constraint>
+<when condition="(HL7.{MSH:Messagetype.messagetype}=&quot;ORU&quot;)&amp;&amp;((HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OP&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ER&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OA&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ET&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OT&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;EA&quot;))&amp;&amp;(!Exists(&quot;PatientLocation&quot;,HL7.{PIDgrpgrp(1).PIDgrp.PV1:AssignedPatientLocation.nurseunitStation}))&amp;&amp;(@tclinic=&quot;ClinicA&quot;)">
+<send transform="UNIT.MysisToORUFinal" target="ToClinicA"></send>
+<return></return>
+</when>
+</rule>
+<rule name="" disabled="false">
+<constraint name="source" value="FromMysis"></constraint>
+<constraint name="docCategory" value="Mysis27"></constraint>
+<constraint name="docName" value="ORU_R01"></constraint>
+<when condition="(HL7.{MSH:Messagetype.messagetype}=&quot;ORU&quot;)&amp;&amp;((HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OP&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ER&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OA&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ET&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OT&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;EA&quot;))&amp;&amp;(!Exists(&quot;PatientLocation&quot;,HL7.{PIDgrpgrp(1).PIDgrp.PV1:AssignedPatientLocation.nurseunitStation}))&amp;&amp;(@tclinic=&quot;ClinicB&quot;)">
+<send transform="UNIT.MysisToORUFinal" target="ToClinicB"></send>
+<return></return>
+</when>
+</rule>
+<rule name="" disabled="false">
+<constraint name="source" value="FromMysis"></constraint>
+<constraint name="docCategory" value="Mysis27"></constraint>
+<constraint name="docName" value="ORU_R01"></constraint>
+<when condition="(HL7.{MSH:Messagetype.messagetype}=&quot;ORU&quot;)&amp;&amp;((HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OP&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ER&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OA&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ET&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OT&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;EA&quot;))&amp;&amp;(!Exists(&quot;PatientLocation&quot;,HL7.{PIDgrpgrp(1).PIDgrp.PV1:AssignedPatientLocation.nurseunitStation}))&amp;&amp;(@tclinic=&quot;ClinicC&quot;)">
+<send transform="UNIT.MysisToORUFinal" target="ToClinicC"></send>
+<return></return>
+</when>
+</rule>
+<rule name="" disabled="false">
+<constraint name="source" value="FromMysis"></constraint>
+<constraint name="docCategory" value="Mysis27"></constraint>
+<constraint name="docName" value="ORU_R01"></constraint>
+<when condition="(HL7.{MSH:Messagetype.messagetype}=&quot;ORU&quot;)&amp;&amp;((HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OP&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ER&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OA&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;ET&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;OT&quot;)||(HL7.{PIDgrpgrp(1).PIDgrp.PV1:PatientClass}=&quot;EA&quot;))&amp;&amp;(!Exists(&quot;PatientLocation&quot;,HL7.{PIDgrpgrp(1).PIDgrp.PV1:AssignedPatientLocation.nurseunitStation}))&amp;&amp;(@tclinic=&quot;ClinicD&quot;)">
+<send transform="UNIT.MysisToORUFinal" target="ToClinicD"></send>
+<return></return>
+</when>
+</rule>
+</ruleSet>
+</ruleDefinition>
+]]></Data>
+</XData>
+</Class>
+</Export>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="UNIT.MysisToORUFinal">
+<Super>Ens.DataTransformDTL</Super>
+<TimeCreated>64364,47880.180164</TimeCreated>
+<DependsOn>EnsLib.HL7.Message</DependsOn>
+
+<Parameter name="IGNOREMISSINGSOURCE">
+<Default>1</Default>
+</Parameter>
+
+<Parameter name="REPORTERRORS">
+<Default>1</Default>
+</Parameter>
+
+<Parameter name="TREATEMPTYREPEATINGFIELDASNULL">
+<Default>0</Default>
+</Parameter>
+
+<XData name="DTL">
+<XMLNamespace>http://www.intersystems.com/dtl</XMLNamespace>
+<Data><![CDATA[
+<transform sourceClass='EnsLib.HL7.Message' targetClass='EnsLib.HL7.Message' sourceDocType='MyORU2:MyFinalORU' targetDocType='MyORU2:MyFinalORU' create='new' language='objectscript' >
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:SetIDPatientID}' property='target.{PIDgrpgrp().PIDgrp.PID:SetIDPatientID}' action='set' />
+<assign value='source.{MSH:Encodingcharacters}' property='target.{MSH:Encodingcharacters}' action='set' />
+<assign value='source.{MSH:Sendingapplication}' property='target.{MSH:Sendingapplication}' action='set' />
+<assign value='source.{MSH:Sendingfacility}' property='target.{MSH:Sendingfacility}' action='set' />
+<assign value='source.{MSH:Receivingapplication}' property='target.{MSH:Receivingapplication}' action='set' />
+<assign value='source.{MSH:Receivingfacility}' property='target.{MSH:Receivingfacility}' action='set' />
+<assign value='source.{MSH:DateTimeofmessage}' property='target.{MSH:DateTimeofmessage}' action='set' />
+<assign value='source.{MSH:Messagetype}' property='target.{MSH:Messagetype}' action='set' />
+<assign value='source.{MSH:MessageControlID}' property='target.{MSH:MessageControlID}' action='set' />
+<assign value='source.{MSH:ProcessingID}' property='target.{MSH:ProcessingID}' action='set' />
+<assign value='source.{MSH:VersionID}' property='target.{MSH:VersionID}' action='set' />
+<assign value='source.{MSH:Continuationpointer}' property='target.{MSH:Continuationpointer}' action='set' />
+<assign value='source.{MSH:Sequencenumber}' property='target.{MSH:Sequencenumber}' action='set' />
+<assign value='source.{MSH:Acceptacknowledgmenttype}' property='target.{MSH:Acceptacknowledgmenttype}' action='set' />
+<assign value='source.{MSH:Applicationacknowledgmenttyp}' property='target.{MSH:Applicationacknowledgmenttyp}' action='set' />
+<assign value='source.{MSH:Countrycode}' property='target.{MSH:Countrycode}' action='set' />
+<if condition='..Length(source.{PIDgrpgrp().PIDgrp.PID:PatientIDInternalID().PatientID})&lt;8' >
+<true>
+<assign value='..Pad(source.{PIDgrpgrp(1).PIDgrp.PID:PatientIDInternalID(1).PatientID},-8,0)' property='target.{PIDgrpgrp(1).PIDgrp.PID:PatientIDExternalID.PatientID}' action='set' />
+<assign value='..Pad(source.{PIDgrpgrp(1).PIDgrp.PID:PatientIDInternalID(1).PatientID},-8,0)' property='target.{PIDgrpgrp(1).PIDgrp.PID:PatientIDInternalID(1).PatientID}' action='set' />
+</true>
+</if>
+<assign value='"FacX"' property='target.{PIDgrpgrp().PIDgrp.PID:PatientIDExternalID.FacilityID}' action='set' />
+<assign value='"A70"' property='target.{PIDgrpgrp(1).PIDgrp.PID:PatientIDInternalID(1).FacilityID}' action='set' />
+<assign value='"MR"' property='target.{PIDgrpgrp().PIDgrp.PID:PatientIDInternalID(1).type}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:AlternatePatientID}' property='target.{PIDgrpgrp(1).PIDgrp.PID:AlternatePatientID}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:PatientName}' property='target.{PIDgrpgrp(1).PIDgrp.PID:PatientName}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:MothersMaidenName}' property='target.{PIDgrpgrp().PIDgrp.PID:MothersMaidenName}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:DateofBirth}' property='target.{PIDgrpgrp().PIDgrp.PID:DateofBirth}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:Sex}' property='target.{PIDgrpgrp().PIDgrp.PID:Sex}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:PatientAlias()}' property='target.{PIDgrpgrp(1).PIDgrp.PID:PatientAlias()}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:Race}' property='target.{PIDgrpgrp().PIDgrp.PID:Race}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:PatientAddress()}' property='target.{PIDgrpgrp(1).PIDgrp.PID:PatientAddress()}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:Countycode}' property='target.{PIDgrpgrp().PIDgrp.PID:Countycode}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:PhoneNumberHome()}' property='target.{PIDgrpgrp(1).PIDgrp.PID:PhoneNumberHome()}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:PhoneNumberBusiness()}' property='target.{PIDgrpgrp(1).PIDgrp.PID:PhoneNumberBusiness()}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:LanguagePatient}' property='target.{PIDgrpgrp().PIDgrp.PID:LanguagePatient}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:MaritalStatus}' property='target.{PIDgrpgrp().PIDgrp.PID:MaritalStatus}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:Religion}' property='target.{PIDgrpgrp().PIDgrp.PID:Religion}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:PatientAccountNumber}' property='target.{PIDgrpgrp().PIDgrp.PID:PatientAccountNumber}' action='set' />
+<if condition='..Length(source.{PIDgrpgrp().PIDgrp.PID:PatientAccountNumber.PatientID})&lt;10' >
+<true>
+<assign value='..Pad(source.{PIDgrpgrp().PIDgrp.PID:PatientAccountNumber.PatientID},+10,0)' property='target.{PIDgrpgrp().PIDgrp.PID:PatientAccountNumber.PatientID}' action='set' />
+</true>
+</if>
+<assign value='"A70"' property='target.{PIDgrpgrp().PIDgrp.PID:PatientAccountNumber.FacilityID}' action='set' />
+<assign value='source.{PIDgrpgrp(1).PIDgrp.PID:MothersIdentifier}' property='target.{PIDgrpgrp(1).PIDgrp.PID:MothersIdentifier}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:EthnicGroup}' property='target.{PIDgrpgrp().PIDgrp.PID:EthnicGroup}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:BirthPlace}' property='target.{PIDgrpgrp().PIDgrp.PID:BirthPlace}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:MultipleBirthIndicator}' property='target.{PIDgrpgrp().PIDgrp.PID:MultipleBirthIndicator}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:BirthOrder}' property='target.{PIDgrpgrp().PIDgrp.PID:BirthOrder}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:Citizenship()}' property='target.{PIDgrpgrp().PIDgrp.PID:Citizenship()}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:VeteransMilitaryStatus}' property='target.{PIDgrpgrp().PIDgrp.PID:VeteransMilitaryStatus}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PV1:SetIDPatientVisit}' property='target.{PIDgrpgrp().PIDgrp.PV1:SetIDPatientVisit}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PV1:PatientClass}' property='target.{PIDgrpgrp().PIDgrp.PV1:PatientClass}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PV1:AssignedPatientLocation}' property='target.{PIDgrpgrp().PIDgrp.PV1:AssignedPatientLocation}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PV1}' property='target.{PIDgrpgrp().PIDgrp.PV1}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().ORC}' property='target.{PIDgrpgrp().ORCgrp().ORC}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:SetIDObservationRequest}' property='target.{PIDgrpgrp().ORCgrp().OBR:SetIDObservationRequest}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:PlacerOrderNumber}' property='target.{PIDgrpgrp().ORCgrp().OBR:PlacerOrderNumber}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:FillerOrderNumber}' property='target.{PIDgrpgrp().ORCgrp().OBR:FillerOrderNumber}' action='set' />
+<assign value='source.{PIDgrpgrp().PIDgrp.PID:Socialsecuritynumberpatient}' property='target.{PIDgrpgrp().PIDgrp.PID:Socialsecuritynumberpatient}' action='set' />
+<if condition='(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200026"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200034"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200042"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200050"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200069"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200077"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200093"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200107"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200115"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200123"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200166"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200174"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200182"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200190"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200204"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200212"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200255"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200301"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200328"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200336"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200344"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200352"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200360"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200379"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200387"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200395"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200409"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200417"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200425"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200433"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200441"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200468"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200476"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200484"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200492"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200506"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200514"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200522"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200530"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200549"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200551"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200557"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200565"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200573"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200603"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"TPADIF"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"TPMDIF"))||(..Contains(source.{PIDgrpgrp(1).ORCgrp(1).OBR:UniversalServiceID.identifier},"200654"))' >
+<true>
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:UniversalServiceID.text}' property='target.{PIDgrpgrp().ORCgrp().OBR:UniversalServiceID.text}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:UniversalServiceID.identifier}' property='target.{PIDgrpgrp().ORCgrp().OBR:UniversalServiceID.identifier}' action='set' />
+</true>
+</if>
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Prioritynotused}' property='target.{PIDgrpgrp().ORCgrp().OBR:Prioritynotused}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Requesteddatetimenotused}' property='target.{PIDgrpgrp().ORCgrp().OBR:Requesteddatetimenotused}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Observationdatetime}' property='target.{PIDgrpgrp().ORCgrp().OBR:Observationdatetime}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Observationenddatetime}' property='target.{PIDgrpgrp().ORCgrp().OBR:Observationenddatetime}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:CollectionVolume}' property='target.{PIDgrpgrp().ORCgrp().OBR:CollectionVolume}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:CollectorIdentifier()}' property='target.{PIDgrpgrp().ORCgrp().OBR:CollectorIdentifier()}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Specimenactioncode}' property='target.{PIDgrpgrp().ORCgrp().OBR:Specimenactioncode}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:DangerCode}' property='target.{PIDgrpgrp().ORCgrp().OBR:DangerCode}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Relevantclinicalinformation}' property='target.{PIDgrpgrp().ORCgrp().OBR:Relevantclinicalinformation}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Specimenreceiveddatetime}' property='target.{PIDgrpgrp().ORCgrp().OBR:Specimenreceiveddatetime}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Specimensource}' property='target.{PIDgrpgrp().ORCgrp().OBR:Specimensource}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:OrderingProvider}' property='target.{PIDgrpgrp().ORCgrp().OBR:OrderingProvider}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:OrderCallbackPhoneNumber()}' property='target.{PIDgrpgrp().ORCgrp().OBR:OrderCallbackPhoneNumber()}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Placerfield1}' property='target.{PIDgrpgrp().ORCgrp().OBR:Placerfield1}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Placerfield2}' property='target.{PIDgrpgrp().ORCgrp().OBR:Placerfield2}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:FillerField1}' property='target.{PIDgrpgrp().ORCgrp().OBR:FillerField1}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:FillerField2}' property='target.{PIDgrpgrp().ORCgrp().OBR:FillerField2}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Resultsreportstatuschangedat}' property='target.{PIDgrpgrp().ORCgrp().OBR:Resultsreportstatuschangedat}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:ChargetoPractice}' property='target.{PIDgrpgrp().ORCgrp().OBR:ChargetoPractice}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:DiagnosticservicesectionID}' property='target.{PIDgrpgrp().ORCgrp().OBR:DiagnosticservicesectionID}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:ResultStatus}' property='target.{PIDgrpgrp().ORCgrp().OBR:ResultStatus}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:ParentResult}' property='target.{PIDgrpgrp().ORCgrp().OBR:ParentResult}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().Quantity}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().Quantity}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().interval}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().interval}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().duration}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().duration}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().startdatetime.timeofanevent}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().startdatetime.timeofanevent}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().enddatetime.timeofanevent}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().enddatetime.timeofanevent}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().condition}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().condition}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().textTX}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().textTX}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().conjunction}' property='target.{PIDgrpgrp().ORCgrp().OBR:Quantitytiming().conjunction}' action='set' />
+<foreach property='source.{PIDgrpgrp().ORCgrp().OBR:ResultCopiesTo()}' key='k1' >
+<assign value='source.{PIDgrpgrp().ORCgrp().OBR:ResultCopiesTo(k1)}' property='target.{PIDgrpgrp().ORCgrp().OBR:ResultCopiesTo(k1)}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp(k1).OBR:ParentNumber}' property='target.{PIDgrpgrp().ORCgrp(k1).OBR:ParentNumber}' action='set' />
+<assign value='source.{PIDgrpgrp().ORCgrp(k1).OBR:TransportationMode}' property='target.{PIDgrpgrp().ORCgrp(k1).OBR:TransportationMode}' action='set' />
+<foreach property='source.{PIDgrpgrp().ORCgrp().OBR:ReasonforStudy(k1)}' key='k2' >
+<assign value='source.{PIDgrpgrp().ORCgrp(k1).OBR:ReasonforStudy(k2)}' property='target.{PIDgrpgrp().ORCgrp(k1).OBR:ReasonforStudy(k2)}' action='set' />
+<assign value='source.{PIDgrpgrp(k1).ORCgrp(k2).OBR:PrincipalResultInterpreter}' property='target.{PIDgrpgrp(k1).ORCgrp(k2).OBR:PrincipalResultInterpreter}' action='set' />
+<foreach property='source.{PIDgrpgrp().ORCgrp(k1).OBR:AssistantResultInterpreter(k2)}' key='k3' >
+<assign value='source.{PIDgrpgrp(k1).ORCgrp(k2).OBR:AssistantResultInterpreter(k3)}' property='target.{PIDgrpgrp(k1).ORCgrp(k2).OBR:AssistantResultInterpreter(k3)}' action='set' />
+</foreach>
+</foreach>
+</foreach>
+</transform>
+]]></Data>
+</XData>
+</Class>
+</Export>
